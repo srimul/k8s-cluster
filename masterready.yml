@@ -1,0 +1,10 @@
+- hosts: master
+  become: yes
+  become_user: ubuntu
+  tasks:
+    - name: Get Master Node status
+      shell: kubectl get nodes >> nodestatus.txt
+      args:
+        chdir: $HOME
+        creates: nodestatus.txt
+      
